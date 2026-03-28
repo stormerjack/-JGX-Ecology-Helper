@@ -1,0 +1,13 @@
+[script]
+name=[ESP] Pyx - Ecology Helper
+type=script
+description=Ecology helper (Monster/NPC)
+
+[files]
+file=Main.lua
+
+[dependencies]
+file=../libs/libjson/script.def
+
+[categories]
+category=Development
