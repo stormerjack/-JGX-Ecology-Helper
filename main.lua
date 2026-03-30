@@ -1329,17 +1329,71 @@ local function DrawEcologySections()
                         }
                         local goblinDefaultTarget = { x = 21660.49, y = -2191.41, z = 103528.36 }
 
+                        local navigateCoordsByGroup = {
+                            ["Goblins"] = {
+                                ["Giant Goblin Totem"] = { 21660.49, -2191.41, 103528.36 },
+                                ["Giant Goblin Tower"] = { 21660.49, -2191.41, 103528.36 },
+                                ["Goblin Cauldron"] = { 21660.49, -2191.41, 103528.36 },
+                                ["Goblin Watchtower"] = { 21660.49, -2191.41, 103528.36 },
+                                ["Goblin Elite Soldier"] = { 21660.49, -2191.41, 103528.36 },
+                                ["Goblin Shaman"] = { 21660.49, -2191.41, 103528.36 },
+                                ["Goblin Thrower"] = { 21660.49, -2191.41, 103528.36 },
+                                ["Goblin Fighter"] = { 21660.49, -2191.41, 103528.36 },
+                                ["Goblin"] = { 21660.49, -2191.41, 103528.36 }
+                            },
+                            ["Quint Hill"] = {
+                                ["Troll Warrior"] = { -303670.47, -1374.44, 12226.66 },
+                                ["Troll Buff Tower"] = { -303670.47, -1374.44, 12226.66 },
+                                ["Troll Protection Tower"] = { -303670.47, -1374.44, 12226.66 },
+                                ["Troll Cow"] = { -305057.69, -1603.50, 21382.87 },
+                                ["Troll"] = { -305057.69, -1603.50, 21382.87 },
+                                ["Troll Elite Warrior"] = { -305057.69, -1603.50, 21382.87 },
+                                ["Troll Thrower"] = { -305057.69, -1603.50, 21382.87 },
+                                ["Troll Ration Depot"] = { -305057.69, -1603.50, 21382.87 },
+                                ["Troll Hut"] = { -309162.81, -1893.63, 24423.84 },
+                                ["Troll Shaman"] = { -300532.94, -1662.97, 24258.22 },
+                                ["Ancient Troll"] = { -314532.44, -1210.68, 10552.16 },
+                                ["Ancient Troll Warrior"] = { -314532.44, -1210.68, 10552.16 },
+                                ["Ancient Troll Elite Warrior"] = { -314532.44, -1210.68, 10552.16 },
+                                ["Troll Wagon"] = { -314532.44, -1210.68, 10552.16 },
+                                ["Ancient Troll Shaman"] = { -321337.12, -254.80, 14677.51 },
+                                ["Ancient Troll Thrower"] = { -328272.31, 12.76, 16924.17 },
+                                ["Dragon Protection Tower"] = { -336849.16, -161.74, 14288.14 },
+                                ["Surrendered Khuruto Soldier"] = { -286258.25, -2380.30, 3939.13 },
+                                ["Surrendered Khuruto Elite Soldier"] = { -286258.25, -2380.30, 3939.13 },
+                                ["Troll Catapult"] = { -286258.25, -2380.30, 3939.13 },
+                                ["Troll Porter"] = { -284687.12, -1791.90, 11490.38 },
+                                ["Troll Barricade"] = { -270196.00, -2670.26, 10029.82 },
+                                ["Young Troll Ox"] = { -269132.22, 1963.69, 56321.03 },
+                                ["Troll Siege Soldier"] = { -258720.66, -1813.34, 8897.38 }
+                            },
+                            ["Marni's House"] = {
+                                ["Mad Screaming Orc Wizard"] = { -191449.89, 5777.82, -125489.99 },
+                                ["Mad Scientist Bomb"] = { -191480.00, 5952.57, -122112.94 },
+                                ["Mad Screaming Harpy"] = { -190241.16, 6105.63, -120284.55 },
+                                ["Mad Screaming Orc Warrior"] = { -192547.72, 5983.59, -117673.51 },
+                                ["Mad Screaming Saunil"] = { -190546.17, 6095.10, -122393.04 },
+                                ["Mad Scientist Cannon"] = { -190546.17, 6095.10, -122393.04 },
+                                ["Chimera"] = { -180440.27, 6141.56, -136431.41 },
+                                ["Horn Chimera"] = { -180440.27, 6141.56, -136431.41 },
+                                ["Orc Test Subject"] = { -185608.56, 6002.12, -135637.19 },
+                                ["Unidentified Cauldron"] = { -183269.64, 6858.53, -130751.13 }
+                            }
+                        }
+
                         for eIdx, entry in ipairs(subgroupEntries) do
                             ImGui.PushID(700000 + (i * 10000) + (j * 100) + eIdx)
                             local entryName = tostring(entry)
                             local entryNk = ESP.NormalizeName(entryName)
                             local entryGrade = gradeByName[entryNk] or "N/A"
+                            local subgroupCoords = navigateCoordsByGroup[subTitle] or {}
+                            local navCoords = subgroupCoords[entryName]
+                            local hasNavigateCoords = navCoords ~= nil
                             local isQuestOnlyEntry = (subTitle == "Goblins" and entryName == "Giath's Secret")
                             local navigateTarget = navigateTargets[entryNk]
                             if not navigateTarget and subTitle == "Goblins" and not isQuestOnlyEntry then
                                 navigateTarget = goblinDefaultTarget
                             end
-                            local hasNavigateCoords = (navigateTarget ~= nil)
                             ImGui.TextColored(ESP.GetGradeColor(entryGrade), "[" .. tostring(entryGrade) .. "]")
 
                             ImGui.SameLine()
@@ -1357,7 +1411,7 @@ local function DrawEcologySections()
                                 end
                                 if ImGui.Button("Navigate") then
                                     if hasNavigateCoords then
-                                        ESP.NavigateToLocation(navigateTarget.x, navigateTarget.y, navigateTarget.z)
+                                        ESP.NavigateToLocation(navCoords[1], navCoords[2], navCoords[3])
                                     end
                                 end
 
