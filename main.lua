@@ -341,7 +341,7 @@ ESP.EcologySections = {
             {
                 title = "Giants",
                 entries = {
-                    "Cyclops Food Drying Stand", "Treasure Chamber of One-Eyed Giant", "Giant Sculpture", "Giant Sculpture",
+                    "Cyclops Food Drying Stand", "Treasure Chamber of One-Eyed Giant", "Giant Sculpture",
                     "Cyclops", "Giant Warrior", "Giant", "Giant Combatant", "Giant Brawler", "Giant Fighter",
                     "Disguised Giant"
                 }
@@ -1300,6 +1300,8 @@ local function DrawEcologySections()
                         local batHint = "Call your horse underneath the bats to make them come down"
                         local toxicCavePlantHint = "Plants are inside the cave"
                         local khurutoCaveHint = "Inside Khuruto Cave"
+                        local auraKzarkaHint = "use a level 1 horse to make them appear"
+                        local jumpDownWellHint = "Jump down the well"
                         local sidProttyHint = "When the parasitic sid protties spawn, you need to damage them but don't kill them and follow them around as they move. After they move for a little while they should evolve."
                         local entryHints = {
                             [ESP.NormalizeName("Cobweb")] = cobwebHint,
@@ -1323,9 +1325,17 @@ local function DrawEcologySections()
                             [ESP.NormalizeName("Cox Raider")] = islandSeenHint,
                             [ESP.NormalizeName("Cox Warrior")] = islandSeenHint,
                             [ESP.NormalizeName("Spider")] = spiderHint,
+                            [ESP.NormalizeName("Aura of Failed Kzarka")] = auraKzarkaHint,
+                            [ESP.NormalizeName("Calpheon Shadow Knight")] = jumpDownWellHint,
+                            [ESP.NormalizeName("Calpheon Elite Shadow Priestess")] = jumpDownWellHint,
+                            [ESP.NormalizeName("Calpheon Shadow Wizard")] = jumpDownWellHint,
+                            [ESP.NormalizeName("Calpheon Elite Shadow Knight")] = jumpDownWellHint,
+                            [ESP.NormalizeName("Calpheon Shadow Guard")] = jumpDownWellHint,
+                            [ESP.NormalizeName("Cave Stalactite")] = jumpDownWellHint,
                         }
                         local entryNotesBelow = {
                             [ESP.NormalizeName("Sid Protty")] = sidProttyHint,
+                            [ESP.NormalizeName("Calpheon Shadow Guard")] = "rare 25min spawn",
                         }
                         local goblinDefaultTarget = { x = 21660.49, y = -2191.41, z = 103528.36 }
 
@@ -1440,6 +1450,69 @@ local function DrawEcologySections()
                                 ["Witch Tower"] = { -226665.70, 5845.26, -249037.97 },
                                 ["Skeleton Lizard"] = { -226665.70, 5845.26, -249037.97 },
                                 ["Hexe Sanctuary Shamanic Tree"] = { -210938.77, 3666.34, -265362.47 }
+                            },
+                            ["Ruins"] = {
+                                ["Ruins Spider"] = { -228179.56, -1123.22, 24210.81 },
+                                ["Tiny Ruins Spider"] = { -225676.42, -950.15, 32902.10 },
+                                ["Ruins Golem"] = { -225676.42, -950.15, 32902.10 },
+                                ["Circle Ruins Tree"] = { -227091.88, -584.51, 40395.21 },
+                                ["Triangle Ruins Tree"] = { -225676.42, -950.15, 32902.10 },
+                                ["Face Ruins Tree"] = { -225676.42, -950.15, 32902.10 },
+                                ["Roaming Black Spirit"] = { -198852.94, -672.75, 54410.94 },
+                                ["Ancient Ruins Stone Gate"] = { -201787.02, -616.21, 50391.11 },
+                                ["Ancient Ruins Guard"] = { -228615.58, -777.02, 59752.61 },
+                                ["Ancient Ruins Defender"] = { -220601.17, -1922.71, 52485.20 },
+                                ["Spotted Deer Possessed by a Black Spirit"] = { -220636.06, -609.77, 39667.12 },
+                                ["Spotted Deer Posessed by Black Spirit"] = { -220636.06, -609.77, 39667.12 },
+                                ["Large Cylinder Ruins Tree"] = { -220636.06, -609.77, 39667.12 },
+                                ["Adventurer Possessed by a Black Spirit"] = { -211023.48, 3017.46, 54097.22 },
+                                ["Giant Possessed by a Black Spirit"] = { -211023.48, 3017.46, 54097.22 },
+                                ["Giant Posessed by a Black Spirit"] = { -211023.48, 3017.46, 54097.22 },
+                                ["Small Cylinder Ruins Tree"] = { -211023.48, 3017.46, 54097.22 },
+                                ["Witch Possessed by a Black Spirit"] = { -209746.36, 4101.06, 60646.01 },
+                                ["Arch Ruins Tree"] = { -210823.12, 3169.60, 56096.03 }
+                            },
+                            ["Secret Societies"] = {
+                                ["Hand of Kzarka"] = { -439130.81, 15492.90, -188631.25 },
+                                ["Calpheon Shrine Warrior"] = { -424353.12, 17836.84, -197240.14 },
+                                ["Calpheon Shrine Priestess"] = { -424353.12, 17836.84, -197240.14 },
+                                ["Aura of Failed Kzarka"] = { -425852.41, 17089.15, -207156.69 },
+                                ["Remnants of Kzarka"] = { -425852.41, 17089.15, -207156.69 },
+                                ["Calpheon Shrine Pillar"] = { -425852.41, 17089.15, -207156.69 },
+                                ["Calpheon Shrine PIllar"] = { -425852.41, 17089.15, -207156.69 },
+                                ["Calpheon Shrine Elite Warrior"] = { -425852.41, 17089.15, -207156.69 },
+                                ["Calpheon Shrine Elite Wizard"] = { -425852.41, 17089.15, -207156.69 },
+                                ["Calpheon Shadow Knight"] = { -368164.50, 10083.32, -177210.23 },
+                                ["Calpheon Elite Shadow Priestess"] = { -368164.50, 10083.32, -177210.23 },
+                                ["Calpheon Shadow Wizard"] = { -368164.50, 10083.32, -177210.23 },
+                                ["Calpheon Elite Shadow Knight"] = { -368164.50, 10083.32, -177210.23 },
+                                ["Calpheon Shadow Guard"] = { -368164.50, 10083.32, -177210.23 },
+                                ["Cave Stalactite"] = { -368164.50, 10083.32, -177210.23 },
+                                ["Calpheon Protester Priestess"] = { -263119.81, -1984.36, -44388.95 },
+                                ["Calpheon Angry Protester"] = { -263119.81, -1984.36, -44388.95 },
+                                ["Calpheon Protester Berserker"] = { -263119.81, -1984.36, -44388.95 },
+                                ["Calpheon Protester"] = { -263119.81, -1984.36, -44388.95 },
+                                ["Calpheon Protester Warrior"] = { -263119.81, -1984.36, -44388.95 }
+                            },
+                            ["Harpies"] = {
+                                ["Harpy Nest"] = { -122690.73, 11856.32, 32469.88 },
+                                ["Small Harpy"] = { -142825.08, 18826.06, 49428.93 },
+                                ["Harpy"] = { -122690.73, 11856.32, 32469.88 },
+                                ["Black Harpy Elite"] = { -122690.73, 11856.32, 32469.88 },
+                                ["Harpy Abductor"] = { -129754.38, 13004.13, -40611.27 },
+                                ["Harpy Mage"] = { -122690.73, 11856.32, 32469.88 },
+                                ["Harpy Warrior"] = { -122690.73, 11856.32, 32469.88 }
+                            },
+                            ["Giants"] = {
+                                ["Giant Warrior"] = { -141739.00, -329.57, -194104.59 },
+                                ["Giant Brawler"] = { -141739.00, -329.57, -194104.59 },
+                                ["Giant Fighter"] = { -141739.00, -329.57, -194104.59 },
+                                ["Giant Sculpture"] = { -141739.00, -329.57, -194104.59 },
+                                ["Giant Combatant"] = { -142668.77, 358.38, -205483.72 },
+                                ["Treasure Chamber of One-Eyed Giant"] = { -315890.91, 8956.78, -254933.20 },
+                                ["Cyclops Food Drying Stand"] = { -315890.91, 8956.78, -254933.20 },
+                                ["Cyclops"] = { -315890.91, 8956.78, -254933.20 },
+                                ["Disguised Giant"] = { -131608.84, 3665.33, -176586.94 }
                             }
                         }
 
